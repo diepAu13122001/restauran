@@ -1,0 +1,23 @@
+footer {
+    background-color: #222;
+    color: #fff;
+    padding: 50px;
+    font-family: "Single Day", cursive;
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-items: center;
+    justify-content: center;
+  }
+  
+  .footer .footer-logo img {
+    max-width: 200px;
+    border-radius: 50%;
+  }
+  
+  .footer-contact,
+  .footer-logo {
+    height: 100%;
+    text-align: left;
+    margin: 0 20px;
+  }

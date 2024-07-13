@@ -1,0 +1,44 @@
+
+main {
+    margin: 0 auto;
+    padding: 0;
+  }
+  
+  #home {
+    margin: 0 auto;
+  }
+  
+
+  
+  #about {
+    font-family: "Single Day", cursive;
+  }
+  
+  #about .title, #menu .title, #admin .title {
+    font-weight: 700;
+    font-family: "Single Day", cursive;
+    font-size: 40px;
+    text-align: center;
+    text-transform: capitalize;
+    margin-top: 25px;
+    margin-bottom: 15px;
+
+  }
+  
+  #about .content {
+      text-align: center;
+      font-size: 20px;
+
+  }
+  
+ 
+
+  .m1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white; 
+    font-size: 60px; 
+    font-family: "Single Day", cursive;
+}

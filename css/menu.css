@@ -1,0 +1,41 @@
+#menu {
+    text-align: center;
+    font-family: "Single Day", cursive;
+  }
+  
+  #menu .title {
+    font-size: 45px;
+    font-weight: 800;
+  }
+  
+  #menu .grid-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 20px;
+  }
+  
+  #menu .grid-list .button {
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+    background-color: transparent;
+    overflow: hidden;
+    font-weight: 800;
+    padding: 10px;
+  }
+  
+  #menu .grid-list button:hover {
+    border: 2px solid orange;
+  }
+  
+  #menu .grid-list .chosen {
+    border: 2px solid orange;
+  }
+  
+  #menu .grid-list button img {
+    max-width: 45px;
+    max-height: 45px;
+  }
