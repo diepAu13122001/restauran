@@ -5,8 +5,23 @@
     margin: 30px;
     text-align: center;
   }
+  .title1{
+    font-family: "Single Day", cursive;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 30px;
+    text-align: center;
+  }
   
   .form {
+    font-family: "Single Day", cursive;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .form1{
     font-family: "Single Day", cursive;
     max-width: 600px;
     margin: 0 auto;

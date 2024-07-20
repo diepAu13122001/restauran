@@ -249,4 +249,3 @@ const bs_list = [
   });
 
 
-  localStorage.clear();

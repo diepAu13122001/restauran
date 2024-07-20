@@ -61,3 +61,11 @@ nav ul {
 .hidden{
     display: none;
 }
+
+
+@media (max-width: 767px) {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+    }
+}

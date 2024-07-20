@@ -11,13 +11,23 @@
     />
 
     <link rel="stylesheet" href="../css/nav.css" />
-    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="stylesheet" href="../css/login.css" />
   </head>
   <body>
     <nav>
       <ul>
         <li>
+          <a href="../html/account.html"> 
+            <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" 
+            alt=""  
+            style="width: 40px; height: auto; border-radius: 100%;">
+          </a>
+        </li>
+        <li>
           <a href="../html/admin_login.html">Admin</a>
+        </li>
+        <li>
+          <a href="../index.html#book">Book a table online</a>
         </li>
         <li>
           <a href="../index.html#menu">Menu</a>
@@ -88,6 +98,51 @@
               <option value="Drink">Drink</option>
             </select>
             <button type="submit" id="add_menu_btn">Add item</button>
+
+            <button type="reset" style="background-color: lightgray">
+              Reset form
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="Delete_menu" class="hidden1">
+        <div class="title1">Delete item in menu</div>
+        <div class="form1">
+          <form action="">
+            <input
+              type="text"
+              placeholder="typ menu item url"
+              id="image"
+              name="image"
+            />
+            <input
+              type="text"
+              placeholder="Type menu item name"
+              id="name"
+              name="name"
+            />
+            <!-- <textarea
+              type="text"
+              placeholder="Type menu item detail"
+              id="detail"
+              name="detail"
+            ></textarea> -->
+            <input
+              type="text"
+              placeholder="Type menu item price"
+              id="price"
+              name="price"
+            />
+            <select name="menu_type" id="menu_type">
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Drink">Drink</option>
+            </select>
+            <button type="submit" id="delete_menu_btn">Delete item</button>
+
             <button type="reset" style="background-color: lightgray">
               Reset form
             </button>
