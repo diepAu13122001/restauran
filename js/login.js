@@ -4,10 +4,15 @@ if (admin) {
   // da login
   document.getElementById("login").classList.add("hidden");
   document.getElementById("add_menu").classList.remove("hidden");
+  document.getElementById("delete_menu").classList.remove("hidden");
+
+
 } else {
   // chua login
   document.getElementById("login").classList.remove("hidden");
   document.getElementById("add_menu").classList.add("hidden");
+  document.getElementById("delete_menu").classList.add("hidden");
+
 }
 
 function validate_form() {

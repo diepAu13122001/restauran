@@ -18,7 +18,7 @@
       <ul>
         <li>
           <a href="../html/account.html"> 
-            <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" 
+            <img id='navAvatar' src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" 
             alt=""  
             style="width: 40px; height: auto; border-radius: 100%;">
           </a>
@@ -106,7 +106,7 @@
         </div>
       </section>
 
-      <section id="Delete_menu" class="hidden1">
+      <section id="delete_menu" class="hidden1">
         <div class="title1">Delete item in menu</div>
         <div class="form1">
           <form action="">
@@ -150,6 +150,14 @@
         </div>
       </section>
     </main>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+          const user = JSON.parse(localStorage.getItem('user'));
+          if (user && user.avatar) {
+              document.getElementById('navAvatar').src = user.avatar;
+          }
+      });
+  </script>
 
     <script src="../js/login.js"></script>
     <script src="../js/add_menu.js"></script>

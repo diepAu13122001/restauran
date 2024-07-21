@@ -248,4 +248,11 @@ const bs_list = [
     toggle_chosen_class("tu");
   });
 
-
+//-----------------------------------------------------------------------------------------------------------------------------------
+//thay đổi ảnh ở thanh điều hướng
+  document.addEventListener('DOMContentLoaded', function() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.avatar) {
+        document.getElementById('navAvatar').src = user.avatar;
+    }
+});

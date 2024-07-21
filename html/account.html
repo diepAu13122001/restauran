@@ -3,39 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Account</title>
     <link rel="stylesheet" href="../css/nav.css" />
     <link rel="stylesheet" href="../css/user.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Single+Day&display=swap" rel="stylesheet">
 </head>
 <body>
     <nav>
         <ul>
-          <li>
-            <a href="../html/account.html"> 
-              <img src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" 
-              alt=""  
-              style="width: 40px; height: auto; border-radius: 100%;">
-            </a>
-          </li>
-          <li>
-            <a href="../html/admin_login.html">Admin</a>
-          </li>
-          <li>
-            <a href="../index.html#book">Book a table online</a>
-          </li>
-          <li>
-            <a href="../index.html#menu">Menu</a>
-          </li>
-          <li>
-            <a href="../index.html#about">About</a>
-          </li>
-          <li>
-            <a href="../index.html#home">Home</a>
-          </li>
+            <li>
+                <a href="../html/account.html"> 
+                    <img src="" id="navAvatar" alt="" style="width: 40px; height: auto; border-radius: 100%;">
+                </a>
+            </li>
+            <li>
+                <a href="../html/admin_login.html">Admin</a>
+            </li>
+            <li>
+                <a href="../index.html#book">Book a table online</a>
+            </li>
+            <li>
+                <a href="../index.html#menu">Menu</a>
+            </li>
+            <li>
+                <a href="../index.html#about">About</a>
+            </li>
+            <li>
+                <a href="../index.html#home">Home</a>
+            </li>
         </ul>
-      </nav>
+    </nav>
 
-   
-    <script src="../js/account_login.js"></script>
+    <section id="account">
+        <div class="container">
+            <h1>Account Information</h1>
+            <div class="avatar-container">
+                <img src="" id="avatar" alt="Avatar">
+                <input type="file" id="changeAvatar" accept="image/*">
+                <button id="logoutBtn">Logout</button>
+            </div>
+            <form id="accountForm">
+                <input type="text" id="username" name="username" placeholder="Username" disabled>
+                <input type="text" id="phonenumber" name="phonenumber" placeholder="Phone number" disabled>
+                <input type="email" id="email" name="email" placeholder="Email" disabled>
+            </form>
+        </div>
+    </section>
+
+    <script src="../js/account.js"></script>
 </body>
 </html>

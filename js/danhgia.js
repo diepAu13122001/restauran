@@ -32,3 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (loggedInUser) {
+        document.getElementById('name').value = loggedInUser.name || '';
+        document.getElementById('email').value = loggedInUser.email || '';
+    }
+});

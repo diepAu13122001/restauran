@@ -96,3 +96,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Get user information from localStorage
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (loggedInUser) {
+        // Populate the form fields with user information
+        document.getElementById('name').value = loggedInUser.name || '';
+        document.getElementById('email').value = loggedInUser.email || '';
+        document.getElementById('phone').value = loggedInUser.phone || '';
+    }
+});
