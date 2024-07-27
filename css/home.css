@@ -14,7 +14,7 @@ main {
     font-family: "Single Day", cursive;
   }
   
-  #about .title, #menu .title, #admin .title {
+  #about .title, #menu .title, #admin .title ,#customer-feedback .title {
     font-weight: 700;
     font-family: "Single Day", cursive;
     font-size: 40px;

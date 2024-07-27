@@ -74,7 +74,7 @@
 
     margin-bottom: 10px;
     text-align: left;
-    width: 215px;
+    width: 200px;
     display: block;
     border-radius: 0;
     padding: 10px;
@@ -90,29 +90,31 @@
 
 /* Đặt kiểu cho nút toggle để mở rộng hoặc thu gọn */
 .filter .toggle-btn {
-    background-color: white;
-    color: black;
-
     cursor: pointer;
     text-align: center;
     margin-bottom: 10px;
     width: 50px;
-    border-radius: 0;
     padding: 10px;
     box-sizing: border-box;
+    img{
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+    }
 }
 
 /* Đặt kiểu cho nội dung chính */
 .main-content {
-    margin-left: 250px;
+    margin-left: 50px;
     flex: 1;
     padding: 20px;
     transition: margin-left 0.3s;
 }
 
+
 /* Đặt kiểu cho nội dung chính khi thanh filter thu gọn */
-.main-content.collapsed {
-    margin-left: 50px;
+.main-content.collapsed{
+    margin-left: 250px;
 }
 
 /* Đặt kiểu cho các thẻ card */
@@ -120,11 +122,12 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
+
 }
 
 /* Đặt kiểu cho ảnh trong thẻ card */
 .card-img-top {
-    width: 150px;
+    width: 100px;
     height: auto;
     object-fit: cover;
 }
@@ -142,6 +145,7 @@
 
 /* Hiển thị nút toggle khi thanh filter thu gọn */
 .filter.collapsed .toggle-btn {
+
     display: block;
 }
 
