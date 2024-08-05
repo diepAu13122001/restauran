@@ -15,3 +15,9 @@ document.getElementById('registerForm').addEventListener('submit', function(even
     alert('Registration successful!');
     window.location.href = 'login.html'; // Redirect to login page
 });
+
+
+document.querySelector('.hamburger-menu').addEventListener('click', function() {
+    document.querySelector('.nav-menu').classList.toggle('active');
+  });
+  

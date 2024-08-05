@@ -42,3 +42,27 @@ main {
     font-size: 60px; 
     font-family: "Single Day", cursive;
 }
+
+/* Đảm bảo image-container có vị trí tương đối */
+.image-container {
+  position: relative;
+}
+
+/* Đặt vị trí của .m1 tương đối với .image-container */
+.m1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white; 
+  font-size: 60px; 
+  font-family: "Single Day", cursive;
+  z-index: 1; /* Đảm bảo .m1 nằm trên hình ảnh */
+}
+
+/* Media query cho màn hình nhỏ hơn */
+@media (max-width: 767px) {
+  .m1 {
+      font-size: 40px; /* Điều chỉnh kích thước font cho màn hình nhỏ hơn nếu cần thiết */
+  }
+}

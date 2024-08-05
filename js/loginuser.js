@@ -17,3 +17,10 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         alert('Invalid credentials!');
     }
 });
+
+
+
+document.querySelector('.hamburger-menu').addEventListener('click', function() {
+    document.querySelector('.nav-menu').classList.toggle('active');
+  });
+  

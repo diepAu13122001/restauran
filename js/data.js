@@ -256,3 +256,5 @@ const bs_list = [
         document.getElementById('navAvatar').src = user.avatar;
     }
 });
+
+

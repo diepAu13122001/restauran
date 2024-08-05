@@ -1,45 +1,44 @@
 #menu {
-    text-align: center;
-    font-family: "Single Day", cursive;
-  }
-  
-  #menu .title {
-    font-size: 45px;
-    font-weight: 800;
-  }
-  
-  #menu .grid-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 15px 20px;
-  }
-  
-  #menu .grid-list .button {
-    border: 2px solid white;
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin: 15px;
-    background-color: transparent;
-    overflow: hidden;
-    font-weight: 800;
-    padding: 10px;
-  }
-  
-  #menu .grid-list button:hover {
-    border: 2px solid orange;
-  }
-  
-  #menu .grid-list .chosen {
-    border: 2px solid orange;
-  }
-  
-  #menu .grid-list button img {
-    max-width: 45px;
-    max-height: 45px;
-  }
+  text-align: center;
+  font-family: "Single Day", cursive;
+}
 
+#menu .title {
+  font-size: 45px;
+  font-weight: 800;
+}
+
+#menu .grid-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px 20px;
+}
+
+#menu .grid-list .button {
+  border: 2px solid white;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin: 15px;
+  background-color: transparent;
+  overflow: hidden;
+  font-weight: 800;
+  padding: 10px;
+}
+
+#menu .grid-list button:hover {
+  border: 2px solid orange;
+}
+
+#menu .grid-list .chosen {
+  border: 2px solid orange;
+}
+
+#menu .grid-list button img {
+  max-width: 45px;
+  max-height: 45px;
+}
   .filter-container {
     display: flex;
     flex: 1;
@@ -105,6 +104,8 @@
 
 /* Đặt kiểu cho nội dung chính */
 .main-content {
+  font-family: "Single Day", cursive;
+
     margin-left: 50px;
     flex: 1;
     padding: 20px;
@@ -152,4 +153,25 @@
 /* Hiển thị các nút khi thanh filter không bị thu gọn */
 .filter:not(.collapsed) button:not(.toggle-btn) {
     display: block;
+}
+
+
+.card {
+    margin: 20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 20px;
 }

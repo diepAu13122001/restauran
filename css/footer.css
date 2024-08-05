@@ -58,7 +58,7 @@
 
   .footer-feedback {
     margin-left: 0; /* Loại bỏ margin-left trên thiết bị di động */
-    max-width: 100%; /* Đảm bảo feedback không quá rộng trên thiết bị di động */
+    width: 300px; /* Đảm bảo feedback không quá rộng trên thiết bị di động */
   }
 }
 .footer-feedback button {

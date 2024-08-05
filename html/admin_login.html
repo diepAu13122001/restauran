@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="../css/nav.css" />
     <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/menu.css">
   </head>
   <body>
     <nav>
@@ -61,50 +62,56 @@
           </form>
         </div>
       </section>
+   
 
-      <section id="add_menu" class="hidden">
-        <div class="title">Add item in menu</div>
-        <div class="form">
-          <form action="">
-            <input
-              type="text"
-              placeholder="typ menu item url"
-              id="image"
-              name="image"
-            />
-            <input
-              type="text"
-              placeholder="Type menu item name"
-              id="name"
-              name="name"
-            />
-            <textarea
-              type="text"
-              placeholder="Type menu item detail"
-              id="detail"
-              name="detail"
-            ></textarea>
-            <input
-              type="text"
-              placeholder="Type menu item price"
-              id="price"
-              name="price"
-            />
-            <select name="menu_type" id="menu_type">
-              <option value="Breakfast">Breakfast</option>
-              <option value="Lunch">Lunch</option>
-              <option value="Dinner">Dinner</option>
-              <option value="Dessert">Dessert</option>
-              <option value="Drink">Drink</option>
-            </select>
-            <button type="submit" id="add_menu_btn">Add item</button>
 
-            <button type="reset" style="background-color: lightgray">
-              Reset form
-            </button>
-          </form>
-        </div>
-      </section>
+    <section id="add_menu" class="hidden">
+      <div class="title">Add item in menu</div>
+      <div class="form">
+        <form action="">
+          <input
+            type="text"
+            placeholder="typ menu item url"
+            id="image"
+            name="image"
+          />
+          <input
+            type="text"
+            placeholder="Type menu item name"
+            id="name"
+            name="name"
+          />
+          <textarea
+            type="text"
+            placeholder="Type menu item detail"
+            id="detail"
+            name="detail"
+          ></textarea>
+          <input
+            type="text"
+            placeholder="Type menu item price"
+            id="price"
+            name="price"
+          />
+          <select name="menu_type" id="menu_type">
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Dessert">Dessert</option>
+            <option value="Drink">Drink</option>
+          </select>
+          <button type="submit" id="add_menu_btn">Add item</button>
+
+          <button type="reset" style="background-color: lightgray">
+            Reset form
+          </button>
+        </form>
+      </div>
+    </section>
+
+
+
+  
 
       <section id="delete_menu" class="hidden1">
         <div class="title1">Delete item in menu</div>

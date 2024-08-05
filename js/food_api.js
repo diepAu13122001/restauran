@@ -1,3 +1,4 @@
+
 function toggleFilter() {
     const filter = document.getElementById('filter');
     const mainContent = document.getElementById('main-content');
@@ -57,6 +58,10 @@ function renderFoodCard(food) {
     cardLink.href = '#';
     cardLink.className = 'btn btn-primary';
     cardLink.textContent = 'View details';
+    cardLink.onclick = function() {
+        localStorage.setItem('foodDetail', JSON.stringify(food));
+        window.location.href = '../html/detail.html';
+    };
 
     cardBodyDiv.appendChild(cardTitle);
     cardBodyDiv.appendChild(cardText);
@@ -73,3 +78,17 @@ function filterFood(tag) {
 }
 
 getFoodList();
+
+document.addEventListener('DOMContentLoaded', function() {
+    const user = JSON.parse(localStorage.getItem('user'));
+    if (user && user.avatar) {
+        document.getElementById('navAvatar').src = user.avatar;
+    }
+});
+
+
+
+document.querySelector('.hamburger-menu').addEventListener('click', function() {
+    document.querySelector('.nav-menu').classList.toggle('active');
+  });
+  
