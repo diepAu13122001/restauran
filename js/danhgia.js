@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     if (typeof emailjs === 'undefined') {
-        console.error('EmailJS script not loaded.');
+        // console.error('EmailJS script not loaded.');
         return;
     }
 
@@ -32,18 +32,3 @@ document.addEventListener('DOMContentLoaded', function () {
             });
     });
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
-    if (loggedInUser) {
-        document.getElementById('name').value = loggedInUser.name || '';
-        document.getElementById('email').value = loggedInUser.email || '';
-    }
-});
-
-
-document.querySelector('.hamburger-menu').addEventListener('click', function() {
-    document.querySelector('.nav-menu').classList.toggle('active');
-  });
-  

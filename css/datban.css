@@ -36,6 +36,19 @@
     font-size: 0.875em;
     color: #dc3545;
   }
+
+  .booking-message {
+    width: 100%;
+    text-align: center;
+    font-size: larger;
+    margin-bottom: 30px;
+  }
+
+  .hide {
+    display: none;
+  }
+
+
   @media (max-width: 767px) {
     #reservationForm .row > .col-md-6 {
       flex: 0 0 100%;

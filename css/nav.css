@@ -1,74 +1,87 @@
 body {
-    font-family: "Single Day", cursive;
-    margin: 0;
-    overflow-x: hidden;
-  }
-  
-  nav {
   font-family: "Single Day", cursive;
+  margin: 0;
+  overflow-x: hidden;
+}
 
+nav {
+  font-family: "Single Day", cursive;
+  width: 100%;
+  background-color: orange;
+  height: 45px;
+  color: white;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.nav-menu {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px 10px;
+  display: flex; /* Hiển thị menu theo chiều ngang */
+  align-items: center;
+  justify-items: center;
+}
+
+.nav-menu li {
+  margin-right: 10px;
+  line-height: 45px;
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.nav-menu li a {
+  text-decoration: none;
+  color: white;
+  display: block;
+  padding:0 10px;
+  text-align: center;
+  height: 100%;
+}
+
+#navAvatar{
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+}
+
+.nav-menu li:hover {
+  background-color: white;
+}
+
+.nav-menu li a:hover {
+  color: black;
+}
+
+.hamburger-menu {
+  display: none; /* Ẩn biểu tượng hamburger trên màn hình lớn */
+  cursor: pointer;
+  padding: 10px;
+}
+
+@media (max-width: 767px) {
+  .nav-menu {
+    display: none; /* Ẩn menu theo chiều ngang trên màn hình nhỏ */
+    flex-direction: column; /* Hiển thị menu theo chiều dọc */
+    position: absolute;
+    top: 45px; /* Đặt dưới thanh điều hướng */
+    left: 0;
     width: 100%;
     background-color: orange;
-    height: 45px;
-    color: white;
-    position: sticky;
-    top: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
   }
-  
-  .nav-menu {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex; /* Hiển thị menu theo chiều ngang */
+
+  .nav-menu.active {
+    display: flex; /* Hiển thị menu khi có class "active" */
   }
-  
-  .nav-menu li {
-    margin: 0 10px;
-  }
-  
-  .nav-menu li a {
-    text-decoration: none;
-    color: white;
-    line-height: 45px;
-    padding: 0 10px;
-  }
-  
-  .nav-menu li:hover {
-    background-color: white;
-  }
-  
-  .nav-menu li a:hover {
-    color: black;
-  }
-  
+
   .hamburger-menu {
-    display: none; /* Ẩn biểu tượng hamburger trên màn hình lớn */
-    cursor: pointer;
-    padding: 10px;
+    display: block; /* Hiển thị biểu tượng hamburger trên màn hình nhỏ */
   }
-  
-  @media (max-width: 767px) {
-    .nav-menu {
-      display: none; /* Ẩn menu theo chiều ngang trên màn hình nhỏ */
-      flex-direction: column; /* Hiển thị menu theo chiều dọc */
-      position: absolute;
-      top: 45px; /* Đặt dưới thanh điều hướng */
-      left: 0;
-      width: 100%;
-      background-color: orange;
-      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-    }
-  
-    .nav-menu.active {
-      display: flex; /* Hiển thị menu khi có class "active" */
-    }
-  
-    .hamburger-menu {
-      display: block; /* Hiển thị biểu tượng hamburger trên màn hình nhỏ */
-    }
-  }
-  
+}

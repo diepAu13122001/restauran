@@ -12,35 +12,43 @@
 
     <link rel="stylesheet" href="../css/nav.css" />
     <link rel="stylesheet" href="../css/login.css" />
-    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/menu.css" />
   </head>
   <body>
     <nav>
-      <ul>
+      <div class="hamburger-menu">
+        <!-- Đổi tên lớp ở đây -->
+        <i class="fas fa-bars"></i>
+        <!-- Biểu tượng hamburger từ Font Awesome -->
+      </div>
+      <ul class="nav-menu">
         <li>
-          <a href="../html/account.html"> 
-            <img id='navAvatar' src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg" 
-            alt=""  
-            style="width: 40px; height: auto; border-radius: 100%;">
+          <a href="./account.html">
+            <img
+              id="navAvatar"
+              src="https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg"
+              alt=""
+            />
           </a>
         </li>
+        <!-- <li>
+            <a href="./html/admin_login.html">Admin</a>
+          </li> -->
         <li>
-          <a href="../html/admin_login.html">Admin</a>
-        </li>
-        <li>
-          <a href="../index.html#book">Book a table online</a>
-        </li>
-        <li>
-          <a href="../html/menu.html">Menu</a>
+          <a href="../index.html#home">Home</a>
         </li>
         <li>
           <a href="../index.html#about">About</a>
         </li>
         <li>
-          <a href="../index.html#home">Home</a>
+          <a href="./menu.html">Menu</a>
+        </li>
+        <li>
+          <a href="../index.html#book">Book a table online</a>
         </li>
       </ul>
     </nav>
+
     <main>
       <section id="login">
         <div class="title">Admin Login</div>
@@ -62,56 +70,50 @@
           </form>
         </div>
       </section>
-   
 
+      <section id="add_menu" class="hidden">
+        <div class="title">Add item in menu</div>
+        <div class="form">
+          <form action="">
+            <input
+              type="text"
+              placeholder="typ menu item url"
+              id="image"
+              name="image"
+            />
+            <input
+              type="text"
+              placeholder="Type menu item name"
+              id="name"
+              name="name"
+            />
+            <textarea
+              type="text"
+              placeholder="Type menu item detail"
+              id="detail"
+              name="detail"
+            ></textarea>
+            <input
+              type="text"
+              placeholder="Type menu item price"
+              id="price"
+              name="price"
+            />
+            <select name="menu_type" id="menu_type">
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Dessert">Dessert</option>
+              <option value="Drink">Drink</option>
+            </select>
+            <button type="submit" id="add_menu_btn">Add item</button>
 
-    <section id="add_menu" class="hidden">
-      <div class="title">Add item in menu</div>
-      <div class="form">
-        <form action="">
-          <input
-            type="text"
-            placeholder="typ menu item url"
-            id="image"
-            name="image"
-          />
-          <input
-            type="text"
-            placeholder="Type menu item name"
-            id="name"
-            name="name"
-          />
-          <textarea
-            type="text"
-            placeholder="Type menu item detail"
-            id="detail"
-            name="detail"
-          ></textarea>
-          <input
-            type="text"
-            placeholder="Type menu item price"
-            id="price"
-            name="price"
-          />
-          <select name="menu_type" id="menu_type">
-            <option value="Breakfast">Breakfast</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Dinner">Dinner</option>
-            <option value="Dessert">Dessert</option>
-            <option value="Drink">Drink</option>
-          </select>
-          <button type="submit" id="add_menu_btn">Add item</button>
-
-          <button type="reset" style="background-color: lightgray">
-            Reset form
-          </button>
-        </form>
-      </div>
-    </section>
-
-
-
-  
+            <button type="reset" style="background-color: lightgray">
+              Reset form
+            </button>
+          </form>
+        </div>
+      </section>
 
       <section id="delete_menu" class="hidden1">
         <div class="title1">Delete item in menu</div>
@@ -158,13 +160,15 @@
       </section>
     </main>
     <script>
-      document.addEventListener('DOMContentLoaded', function() {
-          const user = JSON.parse(localStorage.getItem('user'));
-          if (user && user.avatar) {
-              document.getElementById('navAvatar').src = user.avatar;
-          }
+      document.addEventListener("DOMContentLoaded", function () {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user && user.avatar) {
+          document.getElementById("navAvatar").src = user.avatar;
+        }
       });
-  </script>
+    </script>
+
+    <script src="../js/nav.js"></script>
 
     <script src="../js/login.js"></script>
     <script src="../js/add_menu.js"></script>
