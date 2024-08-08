@@ -1,10 +1,3 @@
-body {
-    font-family: "Single Day", cursive;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-}
-
 .container {
     max-width: 500px;
     margin: 20px auto;
@@ -45,11 +38,11 @@ form {
     align-items: center;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="file"],
-textarea {
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form input[type="file"],
+form textarea {
     width: 100%;
     max-width: 300px;
     padding: 10px;
@@ -57,11 +50,11 @@ textarea {
     box-sizing: border-box;
 }
 
-textarea {
+form textarea {
     height: 100px;
 }
 
-button {
+form button {
     font-family: "Single Day", cursive;
     padding: 10px;
     background-color: #333;
@@ -72,11 +65,11 @@ button {
     margin-top: 10px;
 }
 
-button:hover {
+form button:hover {
     background-color: #555;
 }
 
-a {
+#login a {
     color: #007bff;
     text-decoration: none;
 }

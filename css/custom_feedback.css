@@ -1,69 +1,81 @@
-.feedback-list{
-    width: 100%;
-    overflow-x: hidden;
-
-}
-.carousel-item{
-
-
+.feedback-list {
+  width: 100%;
 }
 .cards {
-    width: 80%;
-    padding: 40px;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    column-gap: 20px;
-    height: 600px;
-
+  width: 100%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 20px;
 }
-.cards .card{
-    width: 100%;
-    box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
-    border: none;
-    outline: none;
-    display: block;
-
+.cards .card {
+  width: 90%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border: none;
+  outline: none;
+  display: block;
+  padding: 10px 20px;
+  max-height: 600px;
 }
 
 .cards .card .card-img {
-    width: 100%;
-    text-align: center;
+  width: 100%;
+  text-align: center;
+  height: 200px;
+  margin-bottom: 30px;
+
+  img {
+    width: 200px;
     height: 200px;
+    object-fit: cover;
+  }
 
-    img{
-        width: 200px;
-        height: 200px;
-        object-fit: cover;
+  .rating img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.feedback-username {
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: capitalize;
+  margin: 10px;
+  text-align: center;
+}
+
+.feedback-content {
+  text-align: center;
+  color: darkgray;
+  font-size: normal;
+}
+
+@media (max-width: 767px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+  .cards .card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+
+    .card-img {
+      height: 100%;
+      margin-bottom: 0;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
     }
 
-
-}
-
-.cards .card .card-content{
-    width: 100%;
-    margin-top: 20px;
-    padding: 5px 20px;
-
-    .rating{
-        width: 100%;
-        text-align: center;
-        img{
-        width: 30px;
-        }
-
+    .card-img img {
+      max-width: 130px;
+      max-height: 130px;
     }
-}
 
-.user-name-feedback{
-    font-size: large;
-    font-weight: 700;
-    text-transform: capitalize;
-    margin: 10px ;
-    text-align: center;
-}
-
-.feedback-content{
-    text-align: center;
-    color: darkgray;
-    font-size: small;
+    .feedback-content,
+    .feedback-username {
+      text-align: left;
+    }
+  }
 }

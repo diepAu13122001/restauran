@@ -78,17 +78,3 @@ function filterFood(tag) {
 }
 
 getFoodList();
-
-document.addEventListener('DOMContentLoaded', function() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && user.avatar) {
-        document.getElementById('navAvatar').src = user.avatar;
-    }
-});
-
-
-
-document.querySelector('.hamburger-menu').addEventListener('click', function() {
-    document.querySelector('.nav-menu').classList.toggle('active');
-  });
-  
