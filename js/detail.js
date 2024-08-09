@@ -6,8 +6,8 @@ document.addEventListener("DOMContentLoaded", function () {
     if (foodDetail.original_video_url) {
       document.getElementById("food-image").style.display = "none";
       document.getElementById("food-video").style.display = "block";
+      
       var source = document.createElement("source");
-
       source.setAttribute("src", foodDetail.original_video_url);
       source.setAttribute("type", "video/mp4");
       video.appendChild(source);
