@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Display confirmation message
         alert(
-          `Cảm ơn ${name}! Đặt bàn của bạn cho ${guests} người vào lúc ${time} ngày ${date} đã được gửi. Chúng tôi sẽ liên hệ với bạn qua email: ${email} hoặc số điện thoại: ${phone}.`
+          `Cảm ơn ${name}! Đặt bàn của bạn cho ${guests} người vào lúc ${time} ngày ${date} đã được gửi. Chúng tôi sẽ liên hệ với bạn qua email: ${email} hoặc số điện thoại: ${phone}. Bạn có để laị lời nhắn: ${note}`
         );
 
         // Optionally, reset the form

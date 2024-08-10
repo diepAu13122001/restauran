@@ -4,11 +4,11 @@ document
     document.querySelector(".nav-menu").classList.toggle("active");
   });
 
-  //thay đổi ảnh ở thanh điều hướng
-  document.addEventListener('DOMContentLoaded', function() {
-    const user = JSON.parse(localStorage.getItem('user'));
-    if (user && user.avatar) {
-        document.getElementById('navAvatar').src = user.avatar;
-    }
-});
 
+//thay đổi avarta ở thanh nav 
+document.addEventListener("DOMContentLoaded", function () {
+  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  if (currentUser && currentUser.avatar) {
+    document.getElementById("navAvatar").src = currentUser.avatar;
+  }
+});
