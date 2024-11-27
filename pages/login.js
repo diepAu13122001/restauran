@@ -118,6 +118,31 @@ this.footer.render(mainContainer);
         });
     }
   }
+  checkLogin(event) {
+    event.preventDefault();
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    // khong nhap du du lieu
+    if (!(email && password)) alert("Vui long nhap du thong tin");
+    else {
+      // co du du lieu -> check auth tren firebase
+      const auth = getAuth(firebaseApp);
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          // luu user hien tai vao local storage
+          localStorage.setItem("currentUser", JSON.stringify(user));
+          // chuyen trang home
+          this.gotoHome();
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    }
+  }
+
 
   goto_Home() {
     const home = new Home();
