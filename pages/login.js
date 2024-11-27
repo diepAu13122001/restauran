@@ -6,93 +6,87 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 import { firebaseApp } from "../data/firebase-app.js";
 import Home from "./home.js";
+import Account from "./account.js";
 
 export default class Login {
-  constructor() {}
+  constructor() {
+    document.getElementsByTagName("head")[0].innerHTML = `<title>login</title>`
+    this.nav = new Nav();
+    this.footer = new Footer();
+  }
 
-  render(mainContainer) {
-    // tao container de form duoc nam giua
-    const containerDiv = document.createElement("div");
-    containerDiv.classList.add("mt-5");
-    containerDiv.style.width = "100%";
-    containerDiv.style.display = "flex";
-    containerDiv.style.justifyContent = "center";
+  render(mainContainer){
+       
 
-    // Tạo thẻ form
-    const form = document.createElement("form");
-    form.className = "col-md-6 p-4 border rounded";
+// Create the section element
+const loginSection = document.createElement('section');
+loginSection.id = 'login';
 
-    // Tạo thẻ h2 tiêu đề
-    const title = document.createElement("h2");
-    title.className = "text-center mb-4";
-    title.innerText = "Login";
+// Create the container div
+const container = document.createElement('div');
+container.className = 'container';
 
-    // Tạo group cho email
-    const emailGroup = document.createElement("div");
-    emailGroup.className = "mb-3";
-    const emailLabel = document.createElement("label");
-    emailLabel.className = "form-label";
-    emailLabel.setAttribute("for", "email");
-    emailLabel.innerText = "Email address";
-    const emailInput = document.createElement("input");
-    emailInput.className = "form-control";
-    emailInput.setAttribute("type", "email");
-    emailInput.setAttribute("id", "email");
-    emailInput.setAttribute("placeholder", "Enter your email");
+// Add the section title
+const title = document.createElement('h1');
+title.textContent = 'Login';
+container.appendChild(title);
 
-    emailGroup.appendChild(emailLabel);
-    emailGroup.appendChild(emailInput);
+// Create the login form
+const loginForm = document.createElement('form');
+loginForm.id = 'loginForm';
 
-    // Tạo group cho password
-    const passwordGroup = document.createElement("div");
-    passwordGroup.className = "mb-3";
-    const passwordLabel = document.createElement("label");
-    passwordLabel.className = "form-label";
-    passwordLabel.setAttribute("for", "password");
-    passwordLabel.innerText = "Password";
-    const passwordInput = document.createElement("input");
-    passwordInput.className = "form-control";
-    passwordInput.setAttribute("type", "password");
-    passwordInput.setAttribute("id", "password");
-    passwordInput.setAttribute("placeholder", "Enter your password");
+// Add the form fields
+const formFieldss = [
+  {
+    id: 'username',
+    name: 'username',
+    placeholder: 'Username',
+    type: 'text',
+    required: true,
+  },
+  {
+    id: 'password',
+    name: 'password',
+    placeholder: 'Password',
+    type: 'password',
+    required: true,
+  },
+];
 
-    passwordGroup.appendChild(passwordLabel);
-    passwordGroup.appendChild(passwordInput);
+formFieldss.forEach((field) => {
+  const input = document.createElement('input');
+  input.type = field.type;
+  input.id = field.id;
+  input.name = field.name;
+  input.placeholder = field.placeholder;
+  input.required = field.required;
+  loginForm.appendChild(input);
+});
 
-    // button group
-    const buttonGroup = document.createElement("div");
-    buttonGroup.style =
-      "display: flex; justify-content: space-between; width: 100%; flex-wrap: nowrap;";
+// Add the login button
+const loginButton = document.createElement('button');
+loginButton.type = 'submit';
+loginButton.textContent = 'Login';
+loginForm.appendChild(loginButton);
 
-    // Tạo button login
-    const submitButton = document.createElement("button");
-    submitButton.className = "btn btn-primary px-5";
-    submitButton.setAttribute("type", "submit");
-    submitButton.innerText = "Login";
-    // bat su kien cho login button
-    submitButton.addEventListener("click", this.checkLogin.bind(this));
+// Append the form to the container
+container.appendChild(loginForm);
 
-    // Tao link dan den register
-    const registerDiv = document.createElement("div");
-    registerDiv.style.textAlign = "left";
-    registerDiv.innerHTML = `<a href='#' id="register-link">Create account</a>`;
-    // bat su kien cho link chuyen trang register
-    // bind: tim kiem ham trong object hien tai -> this khong bi out
-    registerDiv.addEventListener("click", this.getRegister.bind(this));
+// Add the registration link
+const registrationLink = document.createElement('p');
+registrationLink.innerHTML = `Don't have an account? <a href="register.html">Register here</a>`;
+container.appendChild(registrationLink);
 
-    // add in button group
-    buttonGroup.appendChild(registerDiv);
-    buttonGroup.appendChild(submitButton);
+// Append the container to the section
+loginSection.appendChild(container);
 
-    // Thêm tất cả vào form
-    form.appendChild(title);
-    form.appendChild(emailGroup);
-    form.appendChild(passwordGroup);
-    form.appendChild(buttonGroup);
+// Append the login section to the body or another container
+mainContainer.appendChild(loginSection);
 
-    // add vao mainContainer
-    containerDiv.appendChild(form);
-    mainContainer.appendChild(containerDiv);
+this.footer.render(mainContainer);
+
+
+
   }
 
   getRegister() {
@@ -125,8 +119,21 @@ export default class Login {
     }
   }
 
-  gotoHome() {
+  goto_Home() {
     const home = new Home();
-    app.renderComponent(home);
+    app.changeComponent(home);
   }
+  goto_register(){
+    const register = new Register()
+    app.changeComponent(register)
 }
+goto_account(){
+  const account = new Account()
+  app.changeComponent(account)
+}
+goto_admin(){
+  const admin = new Admin()
+  app.changeComponent(admin)
+}
+}
+

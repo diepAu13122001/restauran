@@ -8,6 +8,7 @@ import {
   getDocs,
   addDoc,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import Menu from "./menu.js";
 
 export default class Home {
   constructor() {
@@ -119,5 +120,34 @@ export default class Home {
     } catch (e) {
       console.error("Error adding document: ", e);
     }
+  }
+  goto_login() {
+    const login = new Login();
+    app.renderComponent(login);
+  }
+  goto_menu() {
+    const menu = new Menu();
+    app.renderComponent(menu);
+  }
+  scrollto_home() {
+    const target_section = document.getElementById("home");
+    target_section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
+  scrollto_about() {
+    const target_section = document.getElementById("abot");
+    target_section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
+  }
+  scrollto_book() {
+    const target_section = document.getElementById("book");
+    target_section.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    })
   }
 }
