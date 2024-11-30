@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const user_list = JSON.parse(localStorage.getItem("users")) || [];
   if (currentUser && user_list.length) {
     document.getElementById("username").value = currentUser.username;
-    document.getElementById("phonenumber").value = currentUser.phonenumber;
     document.getElementById("email").value = currentUser.email;
     document.getElementById("avatar").src =
       currentUser.avatar ||

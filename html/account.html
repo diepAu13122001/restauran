@@ -59,24 +59,18 @@
           <h1>Account Information</h1>
           <div class="avatar-container">
             <img src="" id="avatar" alt="Avatar" />
-            <input type="file" id="changeAvatar" accept="image/*" />
           </div>
           <div id="user-point">
             <h1>Your point: <span>100</span></h1>
           </div>
-          <form id="accountForm">
+          <form id="accountForm" enctype="multipart/form-data">
+              Select image to upload:
+              <input type="file" name="fileToUpload" id="changeAvatar">
             <input
               type="text"
               id="username"
               name="username"
               placeholder="Username"
-              disabled
-            />
-            <input
-              type="text"
-              id="phonenumber"
-              name="phonenumber"
-              placeholder="Phone number"
               disabled
             />
             <input
@@ -86,8 +80,9 @@
               placeholder="Email"
               disabled
             />
-
+            <button tpye="submit" id="save_profile_button">Save</button>
             <button id="logoutBtn">Logout</button>
+
           </form>
         </div>
       </section>

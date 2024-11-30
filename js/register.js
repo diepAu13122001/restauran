@@ -8,7 +8,6 @@ document
     // Lấy thông tin từ form
     const user = {
       username: document.getElementById("username").value,
-      phonenumber: document.getElementById("phonenumber").value,
       email: document.getElementById("email").value,
       password: document.getElementById("password").value,
       point: 0,

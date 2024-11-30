@@ -1,5 +1,5 @@
-import Nav from "../components/nav.js";
-import Footer from "../components/footer.js";
+import Nav from "../component/nav.js";
+import Footer from "../component/footer.js";
 import Login from "./login.js";
 import app from "../app.js";
 import { database } from "../data/firebase-app.js";
@@ -150,4 +150,5 @@ export default class Home {
       block: "start",
     })
   }
+
 }

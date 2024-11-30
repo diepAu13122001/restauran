@@ -17,12 +17,9 @@ class App {
 // 1 project = 1 app
 const app = new App();
 // render giao dien
-if (localStorage.getItem("currentUser")) {
-  const home = new Home();
-  app.renderComponent(home);
-} else {
-  const login = new Login();
+
+  const login = new Register();
   app.renderComponent(login);
-}
+
 
 export default app;

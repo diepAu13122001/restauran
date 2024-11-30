@@ -6,6 +6,10 @@ import {
 } from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
 import Login from "./login.js";
 import app from "../app.js";
+import Nav from "../component/nav.js";
+import Footer from "../component/footer.js";
+
+
 
 export default class Register {
   constructor() {
@@ -52,9 +56,6 @@ export default class Register {
     form.appendChild(
       createInput("text", "username", "username", "Username", true)
     );
-    form.appendChild(
-      createInput("text", "phonenumber", "phonenumber", "Phone number", true)
-    );
     form.appendChild(createInput("email", "email", "email", "Email", true));
     form.appendChild(
       createInput("password", "password", "password", "Password", true)
@@ -62,6 +63,7 @@ export default class Register {
 
     // Add the submit button
     const button = document.createElement("button");
+    button.addEventListener("click",this.checkRegister.bind(this))
     button.type = "submit";
     button.textContent = "Register";
     form.appendChild(button);
@@ -71,7 +73,8 @@ export default class Register {
 
     // Add the login link
     const loginLink = document.createElement("p");
-    loginLink.innerHTML = `Already have an account? <a href="login.html">Login here</a>`;
+    loginLink.innerHTML = `Already have an account? <a>Login here</a>`;
+    loginLink.addEventListener("click",this.goto_Login.bind(this));
     container.appendChild(loginLink);
 
     // Append the container to the section
@@ -85,17 +88,30 @@ export default class Register {
 
     this.footer.render(mainContainer);
   }
+  validateForm(email, username, password) {
+    if (!(email && password && username)) {
+      // khong nhap du du lieu
+      alert("Vui long nhap du thong tin");
+      return false;
+    }
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      alert("Email khong dung dinh dang!");
+      return false;
+    }
+    if (password.length < 6) {
+      alert("Mat khau phai tu 6 chu so tro len!");
+      return false;
+    }
+    return true;
+  }
   checkRegister() {
     // get data from input form
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     const username = document.getElementById("username").value.trim();
-    const confirmPassword = document
-      .getElementById("confirm-password")
-      .value.trim();
 
     // kiem tra thong tin nhap vao
-    if (this.validateForm(email, username, password, confirmPassword)) {
+    if (this.validateForm(email, username, password)) {
       const auth = getAuth(firebaseApp);
       createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {

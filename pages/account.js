@@ -1,6 +1,8 @@
 import Login from "./login.js";
 import Register from "./register.js";
 import app from "../app.js";
+import { firebaseApp } from "../data/firebase-app.js";
+import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
 
 class Account {
   constructor() {
@@ -10,103 +12,156 @@ class Account {
   }
   render(mainContainer) {
    
-    // Create the main element
-    const main = document.createElement("main");
+    // Khi trang đã được tải xong, ta sẽ tạo các phần tử HTML qua JavaScript và thêm vào DOM.
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // Tạo phần tử main và section
+  const main = document.createElement('main');
+  const section = document.createElement('section');
+  section.id = 'account';
 
-    // Create the account section
-    const accountSection = document.createElement("section");
-    accountSection.id = "account";
+  // Tạo phần tử container
+  const container = document.createElement('div');
+  container.classList.add('container');
+  
+  // Tạo tiêu đề Account Information
+  const h1 = document.createElement('h1');
+  h1.textContent = 'Account Information';
+  container.appendChild(h1);
 
-    // Create the container div
-    const container = document.createElement("div");
-    container.className = "container";
+  // Tạo phần avatar container và ảnh
+  const avatarContainer = document.createElement('div');
+  avatarContainer.classList.add('avatar-container');
+  const avatarImg = document.createElement('img');
+  avatarImg.id = 'avatar';
+  avatarImg.alt = 'Avatar';
+  avatarContainer.appendChild(avatarImg);
+  container.appendChild(avatarContainer);
 
-    // Add the section title
-    const title = document.createElement("h1");
-    title.textContent = "Account Information";
-    container.appendChild(title);
+  // Tạo phần hiển thị điểm người dùng
+  const userPointDiv = document.createElement('div');
+  userPointDiv.id = 'user-point';
+  const userPointH1 = document.createElement('h1');
+  userPointH1.innerHTML = 'Your point: <span>100</span>';
+  userPointDiv.appendChild(userPointH1);
+  container.appendChild(userPointDiv);
 
-    // Create the avatar container
-    const avatarContainer = document.createElement("div");
-    avatarContainer.className = "avatar-container";
+  // Tạo form để thay đổi thông tin tài khoản
+  const accountForm = document.createElement('form');
+  accountForm.id = 'accountForm';
+  accountForm.enctype = 'multipart/form-data';
 
-    // Add the avatar image
+  // Tạo input file upload
+  const fileLabel = document.createElement('label');
+  fileLabel.textContent = 'Select image to upload:';
+  accountForm.appendChild(fileLabel);
 
-    avatarImg.id = "avatar";
-    avatarImg.alt = "Avatar";
-    avatarContainer.appendChild(avatarImg);
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.name = 'fileToUpload';
+  fileInput.id = 'fileToUpload';
+  accountForm.appendChild(fileInput);
 
-    // Add the file input for changing avatar
-    const avatarInput = document.createElement("input");
-    avatarInput.type = "file";
-    avatarInput.id = "changeAvatar";
-    avatarInput.accept = "image/*";
-    avatarContainer.appendChild(avatarInput);
+  // Tạo các input cho username, phonenumber, email
+  const usernameInput = document.createElement('input');
+  usernameInput.type = 'text';
+  usernameInput.id = 'username';
+  usernameInput.name = 'username';
+  usernameInput.placeholder = 'Username';
+  usernameInput.disabled = true;
+  accountForm.appendChild(usernameInput);
 
-    // Append the avatar container to the main container
-    container.appendChild(avatarContainer);
+  const phoneNumberInput = document.createElement('input');
+  phoneNumberInput.type = 'text';
+  phoneNumberInput.id = 'phonenumber';
+  phoneNumberInput.name = 'phonenumber';
+  phoneNumberInput.placeholder = 'Phone number';
+  phoneNumberInput.disabled = true;
+  accountForm.appendChild(phoneNumberInput);
 
-    // Add user point display
-    const userPoint = document.createElement("div");
-    userPoint.id = "user-point";
+  const emailInput = document.createElement('input');
+  emailInput.type = 'email';
+  emailInput.id = 'email';
+  emailInput.name = 'email';
+  emailInput.placeholder = 'Email';
+  emailInput.disabled = true;
+  accountForm.appendChild(emailInput);
 
-    const pointTitle = document.createElement("h1");
-    pointTitle.innerHTML = "Your point: <span>100</span>";
-    userPoint.appendChild(pointTitle);
+  // Tạo nút Save
+  const saveButton = document.createElement('button');
+  saveButton.type = 'submit';
+  saveButton.id = 'save_profile_button';
+  saveButton.textContent = 'Save';
+  accountForm.appendChild(saveButton);
 
-    // Append user point to the container
-    container.appendChild(userPoint);
+  // Tạo nút Logout
+  const logoutButton = document.createElement('button');
+  logoutButton.type = 'button'; // Chắc chắn là type="button" nếu không muốn form tự động submit
+  logoutButton.id = 'logoutBtn';
+  logoutButton.textContent = 'Logout';
+  accountForm.appendChild(logoutButton);
 
-    // Create the account form
-    const accountForm = document.createElement("form");
-    accountForm.id = "accountForm";
+  // Thêm form vào container
+  container.appendChild(accountForm);
 
-    // Add the form fields
-    const formFieldss = [
-      {
-        id: "username",
-        name: "username",
-        placeholder: "Username",
-        disabled: true,
-      },
-      {
-        id: "phonenumber",
-        name: "phonenumber",
-        placeholder: "Phone number",
-        disabled: true,
-      },
-      { id: "email", name: "email", placeholder: "Email", disabled: true },
-    ];
+  // Thêm container vào section
+  section.appendChild(container);
 
-    formFieldsss.forEach((field) => {
-      const input = document.createElement("input");
-      input.type = "text";
-      input.id = field.id;
-      input.name = field.name;
-      input.placeholder = field.placeholder;
-      input.disabled = field.disabled;
-      accountForm.appendChild(input);
-    });
+  // Thêm section vào main
+  main.appendChild(section);
 
-    // Add the logout button
-    const logoutButton = document.createElement("button");
-    logoutButton.id = "logoutBtn";
-    logoutButton.textContent = "Logout";
-    accountForm.appendChild(logoutButton);
+  // Thêm phần tử main vào body của trang
+  mainContainer.appendChild(main);
 
-    // Append the account form to the container
-    container.appendChild(accountForm);
+  // Xử lý sự kiện cho các nút
+  const avatar = document.getElementById('avatar');
+  const fileToUpload = document.getElementById('fileToUpload');
+  const saveProfileButton = document.getElementById('save_profile_button');
+  const logoutButtonElement = document.getElementById('logoutBtn');
 
-    // Append the container to the account section
-    accountSection.appendChild(container);
+  // Xử lý file upload và hiển thị ảnh lên avatar
+  fileToUpload.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        avatar.src = e.target.result; // Hiển thị ảnh lên phần tử img
+      };
+      reader.readAsDataURL(file);
+    }
+  });
 
-    // Append the account section to the main element
-    main.appendChild(accountSection);
+  // Xử lý sự kiện save profile
+  saveProfileButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    alert("Profile saved!");
+  });
 
+  // Xử lý sự kiện logout
+  logoutButtonElement.addEventListener('click', function(event) {
+    event.preventDefault();
+    alert("You have logged out.");
+  });
+
+});
     // Append the main element to the body or another container
     mainContainer.appendChild(main);
     this.footer.render(mainContainer);
 
+  }
+  uploadimg(){}
+  updateProfile(){}
+  loadInfo(){}
+  logout(){
+    const auth = getAuth(firebaseApp);
+    const _this = this
+    signOut(auth).then(() => {
+      // Sign-out successful.
+      _this.goto_home()
+    }).catch((error) => {
+      // An error happened.
+      alert(error)
+    });
   }
 
   goto_home() {
