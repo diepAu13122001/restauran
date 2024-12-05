@@ -1,3 +1,4 @@
+import Admin from "./pages/admin.js";
 import Home from "./pages/home.js";
 import Login from "./pages/login.js";
 import Register from "./pages/register.js";
@@ -18,7 +19,7 @@ class App {
 const app = new App();
 // render giao dien
 
-  const login = new Register();
+  const login = new Admin();
   app.renderComponent(login);
 
 

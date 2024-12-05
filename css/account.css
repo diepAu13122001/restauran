@@ -1,4 +1,4 @@
-
+/* 
 .container {
     background-color: #fff;
     padding: 20px;
@@ -7,7 +7,7 @@
     width: 100%;
     max-width: 400px;
     text-align: center;
-}
+} */
 h1 {
     margin-bottom: 20px;
 }
@@ -40,14 +40,14 @@ button:hover {
     border-radius: 50%;
 }
 
-body {
+/* body {
     font-family: 'Single Day', cursive;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background-color: #f0f0f0;
-}
+} */
 
 .container {
     background-color: #fff;

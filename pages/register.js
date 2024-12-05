@@ -8,7 +8,12 @@ import Login from "./login.js";
 import app from "../app.js";
 import Nav from "../component/nav.js";
 import Footer from "../component/footer.js";
-
+import { database, storage, firebaseApp } from "../data/firebase-app.js";
+import {
+  addDoc,
+  collection,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
+import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-storage.js";
 
 
 export default class Register {
@@ -104,7 +109,7 @@ export default class Register {
     }
     return true;
   }
-  checkRegister() {
+  async checkRegister() {
     // get data from input form
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
@@ -129,7 +134,20 @@ export default class Register {
             .catch((error) => {
               alert("Update profile error:", error);
             });
-          console.log(user);
+            try {
+              const auth = getAuth(firebaseApp);
+              const user = auth.currentUser;  
+              const docRef = await addDoc(collection(database, "posts"), {
+                title: postData.title,
+                caption: postData.caption,
+                image: this.$imageid,
+                created_by: user.uid,
+              });
+              console.log("Document written with ID: ", docRef.id);
+              alert("Create post successfully");
+            } catch (e) {
+              console.error("Error adding document: ", e);
+            }
         })
         .catch((error) => {
           const errorMessage = error.message;
