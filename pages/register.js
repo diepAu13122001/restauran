@@ -1,99 +1,138 @@
-import { firebaseApp } from "../data/firebase-app.js";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  updateProfile,
-} from "https://www.gstatic.com/firebasejs/10.14.0/firebase-auth.js";
-import Login from "./login.js";
-import app from "../app.js";
-import Nav from "../component/nav.js";
-import Footer from "../component/footer.js";
 import { database, storage, firebaseApp } from "../data/firebase-app.js";
 import {
-  addDoc,
+  setDoc,
+  doc,
   collection,
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-firestore.js";
-import { ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-storage.js";
+import app from "../app.js";
+import Footer from "../component/footer.js";
+import Nav from "../component/nav.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+import Home from "./home.js";
+import Login from "./login.js";
 
-
-export default class Register {
+class Register {
   constructor() {
-    document.getElementsByTagName(
-      "head"
-    )[0].innerHTML = `<title>register</title>`;
     this.nav = new Nav();
     this.footer = new Footer();
+    // set title name for web page
+    document.title = "Register";
   }
 
-  render(mainContainer) {
-    // Create the main element
+  render(main_container) {
+    this.nav.render(main_container);
     const main = document.createElement("main");
-
-    // Create the register section
-    const registerSection = document.createElement("section");
-    registerSection.id = "register";
-
-    // Create the container div
+    const section = document.createElement("section");
+    section.id = "register";
     const container = document.createElement("div");
     container.className = "container";
 
-    // Add the title
-    const title = document.createElement("h1");
-    title.textContent = "Register";
-    container.appendChild(title);
+    const h1 = document.createElement("h1");
+    h1.textContent = "Register";
 
-    // Create the form
     const form = document.createElement("form");
     form.id = "registerForm";
 
-    // Helper function to create input fields
-    function createInput(type, id, name, placeholder, isRequired) {
-      const input = document.createElement("input");
-      input.type = type;
-      input.id = id;
-      input.name = name;
-      input.placeholder = placeholder;
-      if (isRequired) input.required = true;
-      return input;
-    }
+    const usernameInput = document.createElement("input");
+    usernameInput.type = "text";
+    usernameInput.id = "username";
+    usernameInput.name = "username";
+    usernameInput.placeholder = "Username";
+    usernameInput.required = true;
 
-    // Add inputs to the form
-    form.appendChild(
-      createInput("text", "username", "username", "Username", true)
-    );
-    form.appendChild(createInput("email", "email", "email", "Email", true));
-    form.appendChild(
-      createInput("password", "password", "password", "Password", true)
-    );
+    const emailInput = document.createElement("input");
+    emailInput.type = "email";
+    emailInput.id = "email";
+    emailInput.name = "email";
+    emailInput.placeholder = "Email";
+    emailInput.required = true;
 
-    // Add the submit button
+    const passwordInput = document.createElement("input");
+    passwordInput.type = "password";
+    passwordInput.id = "password";
+    passwordInput.name = "password";
+    passwordInput.placeholder = "Password";
+    passwordInput.required = true;
+
     const button = document.createElement("button");
-    button.addEventListener("click",this.checkRegister.bind(this))
     button.type = "submit";
     button.textContent = "Register";
+    button.addEventListener("click", this.check_register.bind(this));
+
+    const p = document.createElement("p");
+    p.textContent = "Already have an account? ";
+    const a = document.createElement("a");
+    a.href = "#";
+    a.textContent = "Login here";
+    p.addEventListener("click", this.goto_login.bind(this));
+    p.appendChild(a);
+
+    form.appendChild(usernameInput);
+    form.appendChild(emailInput);
+    form.appendChild(passwordInput);
     form.appendChild(button);
-
-    // Append the form to the container
+    container.appendChild(h1);
     container.appendChild(form);
+    container.appendChild(p);
+    section.appendChild(container);
+    main.appendChild(section);
 
-    // Add the login link
-    const loginLink = document.createElement("p");
-    loginLink.innerHTML = `Already have an account? <a>Login here</a>`;
-    loginLink.addEventListener("click",this.goto_Login.bind(this));
-    container.appendChild(loginLink);
+    main_container.appendChild(main);
 
-    // Append the container to the section
-    registerSection.appendChild(container);
-
-    // Append the section to the main
-    main.appendChild(registerSection);
-
-    // Append main to the body or another container
-    mainContainer.appendChild(main);
-
-    this.footer.render(mainContainer);
+    this.footer.render(main_container);
   }
-  validateForm(email, username, password) {
+
+  goto_login() {
+    const login = new Login();
+    app.renderComponent(login);
+  }
+
+  async check_register(event) {
+    event.preventDefault();
+    // get data from input form
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const username = document.getElementById("username").value.trim();
+    const _this = this;
+    // kiem tra thong tin nhap vao
+    if (this.validate_registerform(email, username, password)) {
+      const auth = getAuth(firebaseApp);
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(async (userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          // luu them username
+          const docRef = doc(database, "users", user.uid);
+          await setDoc(
+            docRef,
+            {
+              displayName: user.displayName,
+              photoURL:
+                "https://cellphones.com.vn/sforum/wp-content/uploads/2023/10/avatar-trang-4.jpg",
+              point: 0,
+            },
+            { merge: true }
+          );
+          alert("Dang ky thanh cong, vui long chuyen sang login");
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          alert(errorMessage);
+        });
+    }
+  }
+
+  goto_home() {
+    const home = new Home();
+    app.renderComponent(home);
+  }
+
+  validate_registerform(email, username, password, terms) {
     if (!(email && password && username)) {
       // khong nhap du du lieu
       alert("Vui long nhap du thong tin");
@@ -109,55 +148,6 @@ export default class Register {
     }
     return true;
   }
-  async checkRegister() {
-    // get data from input form
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const username = document.getElementById("username").value.trim();
-
-    // kiem tra thong tin nhap vao
-    if (this.validateForm(email, username, password)) {
-      const auth = getAuth(firebaseApp);
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-          // luu them username
-          updateProfile(user, {
-            displayName: username,
-            photoURL:
-              "https://i.pinimg.com/236x/a3/9b/7b/a39b7b7bd7012a4f6fd2030c50e91d0e.jpg",
-          })
-            .then(() => {
-              console.log("User profile updated");
-            })
-            .catch((error) => {
-              alert("Update profile error:", error);
-            });
-            try {
-              const auth = getAuth(firebaseApp);
-              const user = auth.currentUser;  
-              const docRef = await addDoc(collection(database, "posts"), {
-                title: postData.title,
-                caption: postData.caption,
-                image: this.$imageid,
-                created_by: user.uid,
-              });
-              console.log("Document written with ID: ", docRef.id);
-              alert("Create post successfully");
-            } catch (e) {
-              console.error("Error adding document: ", e);
-            }
-        })
-        .catch((error) => {
-          const errorMessage = error.message;
-          alert(errorMessage);
-        });
-    }
-  }
-
-  goto_Login() {
-    const login = new Login();
-    app.renderComponent(login);
-  }
 }
+
+export default Register;

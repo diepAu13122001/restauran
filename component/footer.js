@@ -1,7 +1,6 @@
-class Footer{
-    constructor(){}
-    render(mainContainer){
-
+class Footer {
+  constructor() {}
+  render(mainContainer) {
     // Create the footer element
     const footer = document.createElement("footer");
     footer.className = "footer";
@@ -68,14 +67,14 @@ class Footer{
       {
         label: "Name:",
         type: "text",
-        id: "name",
+        id: "name_footer",
         name: "name",
         feedback: "Please enter your name.",
       },
       {
         label: "Email:",
         type: "email",
-        id: "email",
+        id: "email_footer",
         name: "email",
         feedback: "Please enter a valid email address.",
       },
@@ -185,7 +184,6 @@ class Footer{
 
     // Append footer to the body or another container
     mainContainer.appendChild(footer);
-    }
-
+  }
 }
-export default Footer
+export default Footer;

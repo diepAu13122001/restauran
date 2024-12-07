@@ -19,10 +19,21 @@ const firebaseConfig = {
   measurementId: "G-8YLY8NCX67",
 };
 
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// const firebaseConfig = {
+//   apiKey: "AIzaSyB1CAx-CyP_GQM3FusEsLVPgyhaEw95Nec",
+//   authDomain: "jsi03-blogweb-1b7b7.firebaseapp.com",
+//   databaseURL:
+//     "https://jsi03-blogweb-1b7b7-default-rtdb.asia-southeast1.firebasedatabase.app",
+//   projectId: "jsi03-blogweb-1b7b7",
+//   storageBucket: "jsi03-blogweb-1b7b7.firebasestorage.app",
+//   messagingSenderId: "643164779534",
+//   appId: "1:643164779534:web:c17a8c18c285a9880c785f",
+//   measurementId: "G-GJR7S7GWTL",
+// };
+
 // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
-const analytics = getAnalytics(firebaseApp);
 export const database = getFirestore(firebaseApp);
-
 // Initialize Cloud Storage and get a reference to the service
 export const storage = getStorage(firebaseApp);

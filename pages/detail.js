@@ -2,9 +2,7 @@ import Menu from "./menu.js";
 import app from "../app.js";
 class Detail {
   constructor() {
-    document.getElementsByTagName(
-      "head"
-    )[0].innerHTML = `<title>detail</title>`;
+    document.title = "Meal detail";
     this.nav = new Nav();
     this.footer = new Footer();
   }

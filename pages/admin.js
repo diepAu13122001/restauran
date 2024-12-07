@@ -1,9 +1,9 @@
-import Nav from "../component/nav.js"
-import Footer from "../component/footer.js"
+import Nav from "../component/nav.js";
+import Footer from "../component/footer.js";
 
 class Admin {
   constructor() {
-    document.getElementsByTagName("head")[0].innerHTML = `<title>admin</title>`;
+    document.title = "Admin";
     this.nav = new Nav();
     this.footer = new Footer();
   }

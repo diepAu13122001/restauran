@@ -12,7 +12,7 @@ import Menu from "./menu.js";
 
 export default class Home {
   constructor() {
-    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    document.title = "Home";
     this.nav = new Nav();
     this.footer = new Footer();
   }
@@ -520,8 +520,7 @@ export default class Home {
 
       // Fetch the document
       const docSnap = await getDoc(docRef1);
-      const newpoint = docSnap.data().point+100;
-
+      const newpoint = docSnap.data().point + 100;
 
       if (docSnap.exists()) {
         console.log("Document data:", docSnap.data());

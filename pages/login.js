@@ -9,15 +9,17 @@ import Home from "./home.js";
 import Account from "./account.js";
 import Nav from "../component/nav.js";
 import Footer from "../component/footer.js";
+import Admin from "./admin.js";
 
 export default class Login {
   constructor() {
-    document.getElementsByTagName("head")[0].innerHTML = `<title>login</title>`;
+    document.title = "Login";
     this.nav = new Nav();
     this.footer = new Footer();
   }
 
   render(mainContainer) {
+    this.nav.render(mainContainer);
     // Create the section element
     const loginSection = document.createElement("section");
     loginSection.id = "login";
@@ -36,37 +38,47 @@ export default class Login {
     loginForm.id = "loginForm";
 
     // Add the form fields
-    const formFieldss = [
-      {
-        id: "username",
-        name: "username",
-        placeholder: "Username",
-        type: "text",
-        required: true,
-      },
-      {
-        id: "password",
-        name: "password",
-        placeholder: "Password",
-        type: "password",
-        required: true,
-      },
-    ];
+    const emailField = {
+      id: "email",
+      name: "email",
+      placeholder: "Email",
+      type: "text",
+      required: true,
+    };
 
-    formFieldss.forEach((field) => {
-      const input = document.createElement("input");
-      input.type = field.type;
-      input.id = field.id;
-      input.name = field.name;
-      input.placeholder = field.placeholder;
-      input.required = field.required;
-      loginForm.appendChild(input);
-    });
+    const passwordField = {
+      id: "password",
+      name: "password",
+      placeholder: "Password",
+      type: "password",
+      required: true,
+    };
+
+    // Create and append the email input
+    const emailInput = document.createElement("input");
+    emailInput.type = emailField.type;
+    emailInput.id = emailField.id;
+    emailInput.name = emailField.name;
+    emailInput.placeholder = emailField.placeholder;
+    emailInput.required = emailField.required;
+    loginForm.appendChild(emailInput);
+
+    // Create and append the password input
+    const passwordInput = document.createElement("input");
+    passwordInput.type = passwordField.type;
+    passwordInput.id = passwordField.id;
+    passwordInput.name = passwordField.name;
+    passwordInput.placeholder = passwordField.placeholder;
+    passwordInput.required = passwordField.required;
+    loginForm.appendChild(passwordInput);
 
     // Add the login button
     const loginButton = document.createElement("button");
     loginButton.type = "submit";
     loginButton.textContent = "Login";
+    // bat su kien cho nut login
+    loginButton.addEventListener("click", this.checkLogin.bind(this));
+
     loginForm.appendChild(loginButton);
 
     // Append the form to the container
@@ -87,16 +99,14 @@ export default class Login {
     this.footer.render(mainContainer);
   }
 
-  
-
-
   checkLogin(event) {
     event.preventDefault();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
     // khong nhap du du lieu
-    if (!(email && password)) alert("Vui long nhap du thong tin");
-    else {
+    if (!(email && password)) {
+      alert("Vui long nhap du thong tin");
+    } else {
       // co du du lieu -> check auth tren firebase
       const auth = getAuth(firebaseApp);
       signInWithEmailAndPassword(auth, email, password)
@@ -106,7 +116,7 @@ export default class Login {
           // luu user hien tai vao local storage
           localStorage.setItem("currentUser", JSON.stringify(user));
           // chuyen trang home
-          this.gotoHome();
+          this.goto_Home();
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -117,18 +127,18 @@ export default class Login {
 
   goto_Home() {
     const home = new Home();
-    app.changeComponent(home);
+    app.renderComponent(home);
   }
   goto_register() {
     const register = new Register();
-    app.changeComponent(register);
+    app.renderComponent(register);
   }
   goto_account() {
     const account = new Account();
-    app.changeComponent(account);
+    app.renderComponent(account);
   }
   goto_admin() {
     const admin = new Admin();
-    app.changeComponent(admin);
+    app.renderComponent(admin);
   }
 }

@@ -1,7 +1,6 @@
 import Login from "./login.js";
 import Register from "./register.js";
 import app from "../app.js";
-import { firebaseApp } from "../data/firebase-app.js";
 import {
   getAuth,
   signOut,
@@ -19,9 +18,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-storage.js";
 class Account {
   constructor() {
-    document.getElementsByTagName(
-      "head"
-    )[0].innerHTML = `<title>account</title>`;
+    document.title = "Account";
     this.nav = new Nav();
     this.footer = new Footer();
   }
@@ -165,7 +162,7 @@ class Account {
 
     //update
     if (file) {
-    await this.uploadimg();
+      await this.uploadimg();
     }
     await this.updateProfile();
     this.loadInfo();
